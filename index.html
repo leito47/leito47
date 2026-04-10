@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>n8n → Google Sheets Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Automatisation intelligente</p>
+          <h1>Visualiseur n8n + Google Sheets</h1>
+          <p class="subtitle">
+            Un dashboard moderne pour suivre ton flux n8n, voir les dépenses par
+            catégorie et afficher le script qui transforme les lignes du Google
+            Sheet.
+          </p>
+        </div>
+      </header>
+
+      <section class="kpi-grid" id="kpi-grid"></section>
+
+      <section class="cards-grid">
+        <article class="card flow-card">
+          <div class="card-title-wrap">
+            <h2>Flux n8n (type chart)</h2>
+            <span class="badge">Live view (démo)</span>
+          </div>
+          <div class="mermaid" id="flow-diagram"></div>
+        </article>
+
+        <article class="card script-card">
+          <div class="card-title-wrap">
+            <h2>Script de mapping</h2>
+            <button class="btn" id="copy-script">Copier</button>
+          </div>
+          <pre><code id="script-block"></code></pre>
+        </article>
+      </section>
+
+      <section class="cards-grid charts-row">
+        <article class="card">
+          <div class="card-title-wrap">
+            <h2>Répartition des dépenses</h2>
+            <span class="badge">Par catégorie</span>
+          </div>
+          <canvas id="categoryChart"></canvas>
+        </article>
+
+        <article class="card">
+          <div class="card-title-wrap">
+            <h2>Total TTC par ville</h2>
+            <span class="badge">Bar chart</span>
+          </div>
+          <canvas id="cityChart"></canvas>
+        </article>
+      </section>
+
+      <section class="card">
+        <div class="card-title-wrap">
+          <h2>Lignes Google Sheets</h2>
+          <span class="badge">Mock data</span>
+        </div>
+        <div class="table-wrap">
+          <table id="sheet-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
